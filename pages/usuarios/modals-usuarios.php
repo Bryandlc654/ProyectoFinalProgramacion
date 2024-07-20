@@ -201,3 +201,23 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Activar Usuarios -->
+<div class="modal fade" id="ModalDeleteUser" tabindex="-1" aria-labelledby="ModalDeleteUser" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title fs-5" id="ModalDeleteUser">Habilitar Usuario</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estas seguro de Habilitar el usuarios?
+                <form action="">
+                    <br>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

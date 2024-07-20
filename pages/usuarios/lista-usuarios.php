@@ -14,7 +14,7 @@ $usuario = $_SESSION['usuario'];
 $FotoUsuario = $usuario['Foto_Usuario'];
 
 
-$sql = "SELECT * FROM Usuarios";
+$sql = "SELECT * FROM Usuarios where Estatus_Usuario =1";
 $result = mysqli_query($conexion, $sql);
 
 $sqlRoles = "SELECT * FROM Roles";

@@ -31,7 +31,7 @@ $FotoUsuario = $usuario['Foto_Usuario'];
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="./index.html" class="text-nowrap logo-img">
+                    <a class="text-nowrap logo-img" onclick="cargarcontenido('#cuerpo','./dashboard.php')">
                         <img src="../../assets/logo_ts_negro.png" width="140" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -67,6 +67,30 @@ $FotoUsuario = $usuario['Foto_Usuario'];
                                     <i class="ti ti-user"></i>
                                 </span>
                                 <span class="hide-menu">Usuarios Deshabilitados</span>
+                            </a>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Especialidades</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" onclick="cargarcontenido('#cuerpo','../especialidades/lista-especialidades.php')">
+                                <span>
+                                    <i class="ti ti-user"></i>
+                                </span>
+                                <span class="hide-menu">Lista de Especialidades</span>
+                            </a>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Turnos</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" onclick="cargarcontenido('#cuerpo','../turnos/lista-turnos.php')">
+                                <span>
+                                    <i class="ti ti-user"></i>
+                                </span>
+                                <span class="hide-menu">Lista de Turnos</span>
                             </a>
                         </li>
                     </ul>
