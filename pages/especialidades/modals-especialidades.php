@@ -23,23 +23,6 @@
     </div>
 </div>
 
-
-<!-- Modal Ver Usuarios -->
-<div class="modal fade" id="ModalViewEsp" tabindex="-1" aria-labelledby="ModalViewEsp" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title fs-5" id="ModalViewEsp">Información de Especialidad</h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <!-- Modal Editar Usuarios -->
 <div class="modal fade" id="ModalEditEsp" tabindex="-1" aria-labelledby="ModalEditEsp" aria-hidden="true">
     <div class="modal-dialog">

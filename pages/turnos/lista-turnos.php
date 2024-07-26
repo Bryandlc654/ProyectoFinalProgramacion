@@ -27,7 +27,7 @@ mysqli_close($conexion);
             <div class="card-body p-4">
                 <div class="d-flex align-items-center justify-content-between mb-4">
                     <h5 class="card-title fw-semibold">Turnos</h5>
-                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalRegisterTurn"><i class="ti ti-plus me-2"></i>Agregar tuno</a>
+                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalRegisterTurn"><i class="ti ti-plus me-2"></i>Agregar truno</a>
 
                 </div>
                 <div class="table-responsive">
@@ -48,7 +48,7 @@ mysqli_close($conexion);
                                 </th>
                             </tr>
                         </thead>
-                        <tbody id="listaTurnos">
+                        <tbody id="listaturn">
                             <?php
                             $contador = 1;
                             while ($fila = mysqli_fetch_array($result)) {
@@ -58,7 +58,7 @@ mysqli_close($conexion);
                                 echo "<td class='border-bottom-0'>" . $fila[1] . "</td>";
                                 echo "<td class='border-bottom-0'>" . $fila[2] . "</td>";
                                 echo "<td class='border-bottom-0'>";
-                                echo "<button class='btn btn-warning me-2 editar-turno' data-id='" . $fila[0] . "' data-bs-toggle='modal' data-bs-target='#ModalEditEsp'><i class='ti ti-pencil'></i></button>";
+                                echo "<button class='btn btn-warning me-2 editar-turno' data-id='" . $fila[0] . "' data-bs-toggle='modal' data-bs-target='#ModalEditTurn'><i class='ti ti-pencil'></i></button>";
                                 echo "<button class='btn btn-danger me-2 eliminar-turno' data-id='" . $fila[0] . "' data-bs-toggle='modal' data-bs-target='#ModalDeleteEsp'><i class='ti ti-minus'></i></button>";
                                 echo  "</td>";
                                 echo "</tr>";
