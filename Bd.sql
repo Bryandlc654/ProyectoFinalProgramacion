@@ -1,3 +1,11 @@
+index.php
+/database
+    /database.php
+/config
+    /config.php
+
+
+
 Tabla: Sesiones
 Id_Sesion PK
 Id_Usuario FK
@@ -23,3 +31,18 @@ Id_Rol FK
 Tabla: Roles
 Id_Rol PK
 Nombre_Rol
+
+Tabla: Sesiones
+Id_Sesion	PK
+Id_Usuario	FK
+Fecha_Sesion	
+Hora_Sesion	
+
+Tabla: Registros
+Id_Registro PK
+Id_Usuario	FK
+Fecha_Registro	
+Hora_Registro	
+Accion_Registro
+Tabla_Registro
+IdDato_Registro

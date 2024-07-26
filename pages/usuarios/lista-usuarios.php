@@ -19,6 +19,15 @@ $result = mysqli_query($conexion, $sql);
 
 $sqlRoles = "SELECT * FROM Roles";
 $resultRoles = mysqli_query($conexion, $sqlRoles);
+$resultado_roles = $conexion->query($sqlRoles);
+
+
+$roles= array();
+if ($resultado_roles->num_rows > 0) {
+    while ($fila_roles = $resultado_roles->fetch_assoc()) {
+        $roles[] = $fila_roles;
+    }
+}
 mysqli_close($conexion);
 
 ?>
@@ -56,9 +65,14 @@ mysqli_close($conexion);
                                 </th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="listaUsuarios">
                             <?php while ($fila = mysqli_fetch_array($result)) {
                                 echo "<tr>";
+                                echo "<td class='border-bottom-0'>";
+                                echo "<a href='#' class='btn btn-primary me-2' data-bs-toggle='modal' data-bs-target='#ModalViewUser'><i class='ti ti-eye'></i></a>";
+                                echo "<button class='btn btn-warning me-2 editar-usuario' data-id='".$fila[0]."' data-bs-toggle='modal' data-bs-target='#ModalEditUser'><i class='ti ti-pencil'></i></button>";
+                                echo "<button class='btn btn-danger me-2 eliminar-usuario' data-id='".$fila[0]."' data-bs-toggle='modal' data-bs-target='#ModalDeleteUser'><i class='ti ti-minus'></i></button>";
+                                echo  "</td>";
                                 echo "<td class='border-bottom-0'>" . $fila[1] . "</td>";
                                 echo "<td class='border-bottom-0'>" . $fila[3] . "</td>";
                                 echo "<td class='border-bottom-0'>" . $fila[4] . "</td>";
@@ -81,11 +95,7 @@ mysqli_close($conexion);
                                         break;
                                 }
                                 echo "<td class='border-bottom-0'>" . $rolUser . "</td>";
-                                echo "<td class='border-bottom-0'>";
-                                echo "<a href='#' class='btn btn-primary me-2' data-bs-toggle='modal' data-bs-target='#ModalViewUser'><i class='ti ti-eye'></i></a>";
-                                echo "<a href='#' class='btn btn-warning me-2' data-bs-toggle='modal' data-bs-target='#ModalEditUser'><i class='ti ti-pencil'></i></a>";
-                                echo "<a href='#' class='btn btn-danger me-2' data-bs-toggle='modal' data-bs-target='#ModalDeleteUser'><i class='ti ti-minus'></i></a>";
-                                echo  "</td>";
+
                                 echo "</tr>";
                             } ?>
                         </tbody>

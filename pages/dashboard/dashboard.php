@@ -1,6 +1,16 @@
 <?php
-session_start();
 include '../../database/database.php';
+
+session_start();
+
+// Verifica si el usuario ha iniciado sesión
+if (!isset($_SESSION['usuario'])) {
+    // Redirige a la página de inicio de sesión si no está autenticado
+    header("Location: ../../index.php");
+    exit();
+}
+
+
 
 $usuario = $_SESSION['usuario'];
 $nombreUsuario = $usuario['Nombre_Usuario'];

@@ -21,6 +21,7 @@ $FotoUsuario = $usuario['Foto_Usuario'];
     <title>ISTP Tecnosur</title>
     <link rel="stylesheet" href="../assets/css/styles.min.css" />
     <link rel="stylesheet" href="../../styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 
 <body onload="iniciarCarga()">
@@ -112,12 +113,6 @@ $FotoUsuario = $usuario['Foto_Usuario'];
                                 <i class="ti ti-menu-2"></i>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-icon-hover" href="javascript:void(0)">
-                                <i class="ti ti-bell-ringing"></i>
-                                <div class="notification bg-primary rounded-circle"></div>
-                            </a>
-                        </li>
                     </ul>
                     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                         <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
@@ -135,7 +130,7 @@ $FotoUsuario = $usuario['Foto_Usuario'];
                                             <i class="ti ti-user fs-6"></i>
                                             <p class="mb-0 fs-3">Mi Perfil</p>
                                         </a>
-                                        <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Cerrar Sesión</a>
+                                        <a href="./logout.php" class="btn btn-outline-primary mx-3 mt-2 d-block">Cerrar Sesión</a>
                                     </div>
                                 </div>
                             </li>
@@ -182,6 +177,7 @@ $FotoUsuario = $usuario['Foto_Usuario'];
     <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
     <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
     <script src="../assets/js/dashboard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </body>
 
 </html>

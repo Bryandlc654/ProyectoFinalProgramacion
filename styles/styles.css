@@ -1,5 +1,6 @@
 @import url('./login.css');
 
-.sidebar-link{
+.cursor-p,.sidebar-link{
     cursor: pointer;
 }
+

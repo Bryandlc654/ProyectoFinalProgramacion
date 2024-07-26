@@ -3,6 +3,9 @@ require_once(__DIR__ . '/database/database.php');
 
 session_start();
 
+// Configurar la zona horaria a la de Perú
+date_default_timezone_set('America/Lima');
+
 $response = array('status' => '', 'message' => '');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -26,6 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Verifica la contraseña encriptada
             if ($contrasenaIngresadaEncriptada === $contrasenaEncriptada) {
                 $_SESSION['usuario'] = $usuarioData;
+
+                // Registrar la sesión del usuario
+                registrarSesion($conexion, $usuarioData['Id_Usuario']);
+
                 $response['status'] = 'success';
                 $response['message'] = 'Acceso permitido';
             } else {
@@ -52,9 +59,20 @@ function encriptarContrasena($contrasena)
     return base64_encode($contrasenaEncriptada);
 }
 
-include './components/head.php'
+function registrarSesion($conexion, $idUsuario)
+{
+    $fechaSesion = date('Y-m-d');
+    $horaSesion = date('H:i:s');
 
+    $stmt = $conexion->prepare("INSERT INTO Sesiones (Id_Usuario, Fecha_Sesion, Hora_Sesion) VALUES (?, ?, ?)");
+    $stmt->bind_param('iss', $idUsuario, $fechaSesion, $horaSesion);
+    $stmt->execute();
+    $stmt->close();
+}
+
+include './components/head.php';
 ?>
+
 
 <div class="container">
     <div class="left">
@@ -70,7 +88,7 @@ include './components/head.php'
                     <input type="password" id="contrasena" placeholder="Contraseña" required name="contrasena" class="input__password">
                     <i class="fas fa-eye toggle-password" id="togglePassword"></i>
                 </div>
-                <button class="animation a6" type="submit" id="liveToastBtn">Ingresar</button>
+                <button class="animation a6 cursor-p" type="submit" id="liveToastBtn">Ingresar</button>
             </form>
             <span class="text__alert"></span>
         </div>

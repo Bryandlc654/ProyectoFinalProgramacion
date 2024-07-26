@@ -1,4 +1,7 @@
 <?php
+
+
+
 $totalUsuarios = 0;
 if ($conexion) {
     $consultaTotalUsuarios = $conexion->query("SELECT COUNT(*) AS total FROM Usuarios ");
