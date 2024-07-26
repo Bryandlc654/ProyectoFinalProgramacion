@@ -33,7 +33,7 @@ $FotoUsuario = $usuario['Foto_Usuario'];
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
                     <a class="text-nowrap logo-img" onclick="cargarcontenido('#cuerpo','./dashboard.php')">
-                        <img src="../../assets/logo_ts_negro.png" width="140" alt="" />
+                        <img src="../../assets/logo_ts_negro.png" width="140" alt="Logo" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -65,7 +65,7 @@ $FotoUsuario = $usuario['Foto_Usuario'];
                         <li class="sidebar-item">
                             <a class="sidebar-link" onclick="cargarcontenido('#cuerpo','../usuarios/usuarios-deshabilitados.php')">
                                 <span>
-                                    <i class="ti ti-user"></i>
+                                    <i class="ti ti-user-off"></i>
                                 </span>
                                 <span class="hide-menu">Usuarios Deshabilitados</span>
                             </a>
@@ -77,7 +77,7 @@ $FotoUsuario = $usuario['Foto_Usuario'];
                         <li class="sidebar-item">
                             <a class="sidebar-link" onclick="cargarcontenido('#cuerpo','../especialidades/lista-especialidades.php')">
                                 <span>
-                                    <i class="ti ti-user"></i>
+                                    <i class="ti ti-list"></i>
                                 </span>
                                 <span class="hide-menu">Lista de Especialidades</span>
                             </a>
@@ -89,7 +89,7 @@ $FotoUsuario = $usuario['Foto_Usuario'];
                         <li class="sidebar-item">
                             <a class="sidebar-link" onclick="cargarcontenido('#cuerpo','../turnos/lista-turnos.php')">
                                 <span>
-                                    <i class="ti ti-user"></i>
+                                    <i class="ti ti-calendar"></i>
                                 </span>
                                 <span class="hide-menu">Lista de Turnos</span>
                             </a>
@@ -101,15 +101,29 @@ $FotoUsuario = $usuario['Foto_Usuario'];
                         <li class="sidebar-item">
                             <a class="sidebar-link" onclick="cargarcontenido('#cuerpo','../sesiones/lista-sesiones.php')">
                                 <span>
-                                    <i class="ti ti-user"></i>
+                                    <i class="ti ti-folder"></i>
                                 </span>
                                 <span class="hide-menu">Lista de Sesiones</span>
                             </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a class="sidebar-link" onclick="cargarcontenido('#cuerpo','../registros/lista-registros.php')">
                                 <span>
-                                    <i class="ti ti-user"></i>
+                                    <i class="ti ti-folder"></i>
                                 </span>
                                 <span class="hide-menu">Lista de Registros</span>
+                            </a>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Aulas</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" onclick="cargarcontenido('#cuerpo','../aulas/lista-aulas.php')">
+                                <span>
+                                <i class="ti ti-list"></i>
+                                </span>
+                                <span class="hide-menu">Lista de Aulas</span>
                             </a>
                         </li>
                     </ul>

@@ -78,10 +78,6 @@
     </div>
 </div>
 
-
-
-
-
 <script>
     $(document).ready(function() {
         $(document).on('submit', '#agregarturn', function(event) {

@@ -46,3 +46,21 @@ Hora_Registro
 Accion_Registro
 Tabla_Registro
 IdDato_Registro
+
+
+TABLA: Aulas
+Id_Aula
+Id_Especialidad 
+Semestre_Especialidad
+Seccion_Especialidad
+Perido_Especialidad
+Id_Turno 
+
+Tabla:Turnos
+Id_Turno
+Nombre_Turno
+Horario_Turno
+
+Tabla: Especialidades
+Id_Especialidad
+Nombre_Especialidad
