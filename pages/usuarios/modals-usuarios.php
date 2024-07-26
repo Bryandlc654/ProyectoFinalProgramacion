@@ -73,10 +73,6 @@ $idUser = $usuario['Id_Usuario'];
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="fotoUser" class="form-label">Foto</label>
-                        <input type="file" class="form-control" name="fotoUser">
-                    </div>
-                    <div class="mb-3">
                         <label for="rolUser" class="form-label">Rol</label>
                         <select class="form-control" name="rolUser" required>
                             <option>Elige una opción</option>
@@ -155,10 +151,6 @@ $idUser = $usuario['Id_Usuario'];
                             <option value="1">Habilitado</option>
                             <option value="0">Deshabilitado</option>
                         </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="fotoUser" class="form-label">Foto</label>
-                        <input type="file" class="form-control" id="fotoUserEdit" name="fotoUserEdit">
                     </div>
                     <div class="mb-3">
                         <label for="rolUser" class="form-label">Rol</label>

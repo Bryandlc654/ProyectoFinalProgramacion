@@ -22,7 +22,7 @@ $resultRoles = mysqli_query($conexion, $sqlRoles);
 $resultado_roles = $conexion->query($sqlRoles);
 
 
-$roles= array();
+$roles = array();
 if ($resultado_roles->num_rows > 0) {
     while ($fila_roles = $resultado_roles->fetch_assoc()) {
         $roles[] = $fila_roles;
@@ -38,13 +38,19 @@ mysqli_close($conexion);
             <div class="card-body p-4">
                 <div class="d-flex align-items-center justify-content-between mb-4">
                     <h5 class="card-title fw-semibold">Usuarios</h5>
+                    <div class="d-flex gap-3">
+                    <input type="text" id="searchUserCode" class="form-control" placeholder="Buscar por Código de Usuario">
                     <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalRegisterUser"><i class="ti ti-user me-2"></i>Agregar usuario</a>
+                    </div>
 
                 </div>
                 <div class="table-responsive">
                     <table class="table text-nowrap mb-0 align-middle">
                         <thead class="text-dark fs-4">
                             <tr>
+                                <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">Acciones</h6>
+                                </th>
                                 <th class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">Código</h6>
                                 </th>
@@ -60,23 +66,20 @@ mysqli_close($conexion);
                                 <th class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">Rol</h6>
                                 </th>
-                                <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Acciones</h6>
-                                </th>
                             </tr>
                         </thead>
                         <tbody id="listaUsuarios">
                             <?php while ($fila = mysqli_fetch_array($result)) {
                                 echo "<tr>";
                                 echo "<td class='border-bottom-0'>";
-                                echo "<button class='btn btn-warning me-2 editar-usuario' data-id='".$fila[0]."' data-bs-toggle='modal' data-bs-target='#ModalEditUser'><i class='ti ti-pencil'></i></button>";
-                                echo "<button class='btn btn-danger me-2 eliminar-usuario' data-id='".$fila[0]."' data-bs-toggle='modal' data-bs-target='#ModalDeleteUser'><i class='ti ti-minus'></i></button>";
+                                echo "<button class='btn btn-warning me-2 editar-usuario' data-id='" . $fila[0] . "' data-bs-toggle='modal' data-bs-target='#ModalEditUser'><i class='ti ti-pencil'></i></button>";
+                                echo "<button class='btn btn-danger me-2 eliminar-usuario' data-id='" . $fila[0] . "' data-bs-toggle='modal' data-bs-target='#ModalDeleteUser'><i class='ti ti-minus'></i></button>";
                                 echo  "</td>";
                                 echo "<td class='border-bottom-0'>" . $fila[1] . "</td>";
                                 echo "<td class='border-bottom-0'>" . $fila[3] . "</td>";
                                 echo "<td class='border-bottom-0'>" . $fila[4] . "</td>";
                                 echo "<td class='border-bottom-0'>" . $fila[5] . "</td>";
-                                switch ($fila[14]) {
+                                switch ($fila[13]) {
                                     case 1:
                                         $rolUser = 'Administrador';
                                         break;
@@ -104,6 +107,47 @@ mysqli_close($conexion);
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#searchUserCode').on('input', function() {
+            var searchQuery = $(this).val();
+            $.ajax({
+                url: '../usuarios/search_users.php', 
+                method: 'POST',
+                data: {
+                    query: searchQuery
+                },
+                dataType: 'json',
+                success: function(response) {
+                    var tableBody = $('#listaUsuarios');
+                    tableBody.empty();
+                    if (response.length > 0) {
+                        response.forEach(function(user) {
+                            var userRow = '<tr>' +
+                                '<td class="border-bottom-0">' +
+                                '<button class="btn btn-warning me-2 editar-usuario" data-id="' + user.Id_Usuario + '" data-bs-toggle="modal" data-bs-target="#ModalEditUser"><i class="ti ti-pencil"></i></button>' +
+                                '<button class="btn btn-danger me-2 eliminar-usuario" data-id="' + user.Id_Usuario + '" data-bs-toggle="modal" data-bs-target="#ModalDeleteUser"><i class="ti ti-minus"></i></button>' +
+                                '</td>' +
+                                '<td class="border-bottom-0">' + user.Codigo_Usuario + '</td>' +
+                                '<td class="border-bottom-0">' + user.Nombre_Usuario + '</td>' +
+                                '<td class="border-bottom-0">' + user.Apellidos_Usuario + '</td>' +
+                                '<td class="border-bottom-0">' + user.NroDocumento_Usuario + '</td>' +
+                                '<td class="border-bottom-0">' + user.rolUser + '</td>' +
+                                '</tr>';
+                            tableBody.append(userRow);
+                        });
+                    } else {
+                        tableBody.append('<tr><td colspan="6" class="text-center">No se encontraron usuarios</td></tr>');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching users:', error);
+                }
+            });
+        });
+    });
+</script>
 
 <?php
 require './modals-usuarios.php';
