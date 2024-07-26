@@ -94,6 +94,18 @@ $FotoUsuario = $usuario['Foto_Usuario'];
                                 <span class="hide-menu">Lista de Turnos</span>
                             </a>
                         </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Sesiones</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" onclick="cargarcontenido('#cuerpo','../sesiones/lista-sesiones.php')">
+                                <span>
+                                    <i class="ti ti-user"></i>
+                                </span>
+                                <span class="hide-menu">Lista de Sesiones</span>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
