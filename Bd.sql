@@ -64,3 +64,11 @@ Horario_Turno
 Tabla: Especialidades
 Id_Especialidad
 Nombre_Especialidad
+
+
+tabla Matriculas: 
+Codigo_Matricula	
+Fecha_Matricula
+Ficha_Matricula	
+Id_Usuario
+Id_Aula

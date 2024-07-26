@@ -126,6 +126,18 @@ $FotoUsuario = $usuario['Foto_Usuario'];
                                 <span class="hide-menu">Lista de Aulas</span>
                             </a>
                         </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Matriculas</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" onclick="cargarcontenido('#cuerpo','../matriculas/lista-matriculas.php')">
+                                <span>
+                                <i class="ti ti-list"></i>
+                                </span>
+                                <span class="hide-menu">Lista de Matriculas</span>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
