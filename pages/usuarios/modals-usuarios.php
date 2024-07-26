@@ -97,25 +97,6 @@ $idUser = $usuario['Id_Usuario'];
     </div>
 </div>
 
-
-
-
-<!-- Modal Ver Usuarios -->
-<div class="modal fade" id="ModalViewUser" tabindex="-1" aria-labelledby="ModalViewUser" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title fs-5" id="ModalViewUser">Información de Usuario</h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <!-- Modal Editar Usuarios -->
 <div class="modal fade" id="ModalEditUser" tabindex="-1" aria-labelledby="ModalEditUser" aria-hidden="true">
     <div class="modal-dialog">
@@ -126,7 +107,7 @@ $idUser = $usuario['Id_Usuario'];
             </div>
             <div class="modal-body">
                 <form id="formEditarUser">
-                    <input type="text" class="form-control" id="idUserEdit" name="idUserEdit">
+                    <input type="text" hidden class="form-control" id="idUserEdit" name="idUserEdit">
                     <div class="mb-3">
                         <label for="nombresUser" class="form-label">Nombres</label>
                         <input type="text" class="form-control" id="nombresUserEdit" name="nombresUserEdit">
@@ -337,7 +318,6 @@ $idUser = $usuario['Id_Usuario'];
         $(document).on('submit', '#formEditarUser', function(event) {
             event.preventDefault();
             var formData = $(this).serialize();
-            console.log(formData)
 
             // Deshabilita el botón de envío para evitar múltiples envíos
             var submitButton = $(this).find('button[type="submit"]');
@@ -353,7 +333,7 @@ $idUser = $usuario['Id_Usuario'];
                         toastr.success(response.message);
                         actualizarLista();
                         $('#ModalEditUser').modal('hide'); // Cierra el modal
-                        $('##formEditarUser')[0].reset(); // Limpia los inputs
+                        $('#formEditarUser')[0].reset(); // Limpia los inputs
                     } else {
                         toastr.error(response.message);
                     }

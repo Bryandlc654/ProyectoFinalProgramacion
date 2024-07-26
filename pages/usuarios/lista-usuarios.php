@@ -69,7 +69,6 @@ mysqli_close($conexion);
                             <?php while ($fila = mysqli_fetch_array($result)) {
                                 echo "<tr>";
                                 echo "<td class='border-bottom-0'>";
-                                echo "<a href='#' class='btn btn-primary me-2' data-bs-toggle='modal' data-bs-target='#ModalViewUser'><i class='ti ti-eye'></i></a>";
                                 echo "<button class='btn btn-warning me-2 editar-usuario' data-id='".$fila[0]."' data-bs-toggle='modal' data-bs-target='#ModalEditUser'><i class='ti ti-pencil'></i></button>";
                                 echo "<button class='btn btn-danger me-2 eliminar-usuario' data-id='".$fila[0]."' data-bs-toggle='modal' data-bs-target='#ModalDeleteUser'><i class='ti ti-minus'></i></button>";
                                 echo  "</td>";
