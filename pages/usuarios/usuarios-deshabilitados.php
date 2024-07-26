@@ -54,7 +54,7 @@ mysqli_close($conexion);
                                 </th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="listaUsuariosdesh">
                             <?php while ($fila = mysqli_fetch_array($result)) {
                                 echo "<tr>";
                                 echo "<td class='border-bottom-0'>" . $fila[1] . "</td>";
@@ -80,9 +80,7 @@ mysqli_close($conexion);
                                 }
                                 echo "<td class='border-bottom-0'>" . $rolUser . "</td>";
                                 echo "<td class='border-bottom-0'>";
-                                echo "<a href='#' class='btn btn-primary me-2' data-bs-toggle='modal' data-bs-target='#ModalViewUser'><i class='ti ti-eye'></i></a>";
-                                echo "<a href='#' class='btn btn-warning me-2' data-bs-toggle='modal' data-bs-target='#ModalEditUser'><i class='ti ti-pencil'></i></a>";
-                                echo "<a href='#' class='btn btn-success me-2' data-bs-toggle='modal' data-bs-target='#ModalActivateUser'><i class='ti ti-minus'></i></a>";
+                                echo "<button title='Habilitar usuario' class='btn btn-success me-2 habilitar-usuario' data-id='" . $fila[0] . "' data-bs-toggle='modal' data-bs-target='#ModalActivateUser'><i class='ti ti-check'></i></button>";
                                 echo  "</td>";
                                 echo "</tr>";
                             } ?>

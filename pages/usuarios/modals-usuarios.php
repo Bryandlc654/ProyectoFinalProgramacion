@@ -203,19 +203,19 @@ $idUser = $usuario['Id_Usuario'];
 </div>
 
 <!-- Modal Activar Usuarios -->
-<div class="modal fade" id="ModalDeleteUser" tabindex="-1" aria-labelledby="ModalDeleteUser" aria-hidden="true">
+<div class="modal fade" id="ModalActivateUser" tabindex="-1" aria-labelledby="ModalActivateUser" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title fs-5" id="ModalDeleteUser">Habilitar Usuario</h2>
+                <h2 class="modal-title fs-5">Habilitar Usuario</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 ¿Estas seguro de Habilitar el usuarios?
-                <form action="">
+                <form>
                     <br>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-danger btn-eliminar">Eliminar</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success btn-habilitar">Habilitar</button>
                 </form>
             </div>
         </div>
@@ -279,6 +279,36 @@ $idUser = $usuario['Id_Usuario'];
                     },
                     error: function(xhr, status, error) {
                         toastr.error('Error al eliminar. Por favor, intenta nuevamente.');
+                        $('#ModalDeleteUser').modal('hide'); // Cierra el modal en caso de error
+                    }
+                });
+            });
+        });
+
+        $(document).on('click', '.habilitar-usuario', function() {
+            var usuarioId = $(this).data('id');
+            $('#ModalActivateUser').modal('show');
+
+            $('#ModalActivateUser .btn-habilitar').one('click', function() {
+                $.ajax({
+                    url: '../usuarios/habilitar-usuario.php',
+                    method: 'POST',
+                    data: {
+                        habUsuarioId: usuarioId
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            toastr.success(response.message);
+                            actualizarLista();
+                            actualizarListaDesh();
+                            $('#ModalActivateUser').modal('hide'); // Cierra el modal
+                        } else {
+                            toastr.error(response.message);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        toastr.error('Error al habilitar. Por favor, intenta nuevamente.');
                         $('#ModalDeleteUser').modal('hide'); // Cierra el modal en caso de error
                     }
                 });
@@ -351,6 +381,19 @@ $idUser = $usuario['Id_Usuario'];
                 method: 'GET',
                 success: function(data) {
                     $('#listaUsuarios').html(data);
+                    toastr.success("Lista actualizada");
+                },
+                error: function(xhr, status, error) {
+                    toastr.error('Error al actualizar la lista .');
+                }
+            });
+        }
+        function actualizarListaDesh() {
+            $.ajax({
+                url: '../usuarios/obtener-listadesh.php',
+                method: 'GET',
+                success: function(data) {
+                    $('#listaUsuariosdesh').html(data);
                     toastr.success("Lista actualizada");
                 },
                 error: function(xhr, status, error) {
