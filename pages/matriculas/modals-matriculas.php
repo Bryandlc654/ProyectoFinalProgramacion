@@ -49,18 +49,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="editMatricula">
+                <form id="formeditMat">
                     <div class="mb-3">
                         <label for="fechaMatricula" class="form-label">Fecha de Matricula</label>
-                        <input type="date" class="form-control" name="idMatriculaEdit" id="idMatriculaEdit" required>
+                        <input type="text" class="form-control" name="idMatriculaEdit" id="idMatriculaEdit" required>
+                        <input type="text" class="form-control" name="idMatriculaEditUser" id="idMatriculaEditUser" required>
                         <input type="date" class="form-control" name="fechaMatriculaEdit" id="fechaMatriculaEdit" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="codEstudiante" class="form-label">Estudiante</label>
-                        <input type="text" class="form-control" name="codEstudianteEdit" id="codEstudianteEdit" required>
-                        <div id="suggestions" class="list-group" style="display: none; position: absolute; z-index: 1000;"></div>
-                        <br>
-                        <input type="text" class="form-control" id="nombreEstudiante" readonly>
                     </div>
                     <div class="mb-3">
                         <label for="especialidadAula" class="form-label">Aula</label>
@@ -190,21 +184,52 @@
         $(document).on('click', '.editar-matricula', function() {
             var matIdEdit = $(this).data('id');
             $.ajax({
-                url: '../matricula/obtener-mat.php',
+                url: '../matriculas/obtener-mat.php',
                 method: 'POST',
                 data: {
                     mat_idEdit: matIdEdit
                 },
                 dataType: 'json',
                 success: function(response) {
-                    $('#idturnEdit').val(response.Id_Matricula);
-                    $('#nombreTurnEdit').val(response.Fecha_Matricula);
-                    $('#horarioTurnEdit').val(response.Id_Aula);
+                    $('#idMatriculaEdit').val(response.Id_Matricula);
+                    $('#idMatriculaEditUser').val(response.Id_Usuario);
+                    $('#fechaMatriculaEdit').val(response.Fecha_Matricula);
+                    $('#especialidadAulaEdit').val(response.Id_Aula);
                 },
                 error: function(xhr, status, error) {
                     toastr.error('Error al obtener los detalles. Por favor, intenta nuevamente.');
                 }
             });
         });
+
+        // Evento submit del formulario para editar sede
+        $(document).on('submit', '#formeditMat', function(event) {
+            event.preventDefault();
+            var formData = $(this).serialize();
+
+            $.ajax({
+                url: '../matriculas/editar-mat.php',
+                method: 'POST',
+                data: formData,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === 'success') {
+                        toastr.success(response.message);
+                        $('#ModalEditmat').modal('hide'); // Cierra el modal
+                        $('#formeditMat')[0].reset(); // Limpia los inputs
+                    } else {
+                        toastr.error(response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    toastr.error('Error. Por favor, intenta nuevamente.');
+                    $('#ModalEditmat').modal('hide'); // Cierra el modal en caso de error
+                }
+            });
+        });
+
+
+
+
     });
 </script>

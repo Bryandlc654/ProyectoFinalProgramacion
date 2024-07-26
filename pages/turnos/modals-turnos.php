@@ -146,7 +146,7 @@
                         toastr.success(response.message);
                         actualizarLista();
                         $('#ModalEditTurn').modal('hide'); // Cierra el modal
-                        $('#formeditTurnp')[0].reset(); // Limpia los inputs
+                        $('#formeditTurn')[0].reset(); // Limpia los inputs
                     } else {
                         toastr.error(response.message);
                     }
