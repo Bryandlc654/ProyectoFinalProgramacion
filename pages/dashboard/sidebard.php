@@ -105,6 +105,12 @@ $FotoUsuario = $usuario['Foto_Usuario'];
                                 </span>
                                 <span class="hide-menu">Lista de Sesiones</span>
                             </a>
+                            <a class="sidebar-link" onclick="cargarcontenido('#cuerpo','../registros/lista-registros.php')">
+                                <span>
+                                    <i class="ti ti-user"></i>
+                                </span>
+                                <span class="hide-menu">Lista de Registros</span>
+                            </a>
                         </li>
                     </ul>
                 </nav>
